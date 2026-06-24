@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Apple, Play } from 'lucide-react';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { getDictionary, type Locale, withLocale } from '@/lib/i18n';
@@ -7,12 +8,12 @@ import { siteConfig } from '@/lib/site-config';
 
 function getNavLinks(t: ReturnType<typeof getDictionary>) {
   return [
-    { label: t.nav.riders, href: "/#riders" },
-    { label: t.nav.drivers, href: "/#drivers" },
-    { label: t.nav.whyBandi, href: "/#why-bandi" },
-    { label: t.nav.faq, href: "/faq" },
-    { label: t.nav.contact, href: "/contact" },
-  ]
+    { label: t.nav.riders, href: '/#riders' },
+    { label: t.nav.drivers, href: '/#drivers' },
+    { label: t.nav.whyBandi, href: '/#why-bandi' },
+    { label: t.nav.faq, href: '/faq' },
+    { label: t.nav.contact, href: '/contact' },
+  ];
 }
 
 function getFooterGroups(t: ReturnType<typeof getDictionary>) {
@@ -20,33 +21,50 @@ function getFooterGroups(t: ReturnType<typeof getDictionary>) {
     {
       title: t.footer.company,
       links: [
-        { label: t.footer.about, href: "/about" },
-        { label: t.footer.contact, href: "/contact" },
-        { label: t.footer.support, href: "/support" },
-        { label: t.footer.faq, href: "/faq" },
+        { label: t.footer.about, href: '/about' },
+        { label: t.footer.contact, href: '/contact' },
+        { label: t.footer.support, href: '/support' },
+        { label: t.footer.faq, href: '/faq' },
       ],
     },
     {
       title: t.footer.legal,
       links: [
-        { label: t.footer.privacy, href: "/privacy" },
-        { label: t.footer.dataPolicy, href: "/data-policy" },
-        { label: t.footer.dataDeletion, href: "/data-deletion" },
-        { label: t.footer.riderTerms, href: "/terms/riders" },
-        { label: t.footer.driverTerms, href: "/terms/drivers" },
-        { label: t.footer.companyTerms, href: "/terms/company" },
+        { label: t.footer.privacy, href: '/privacy' },
+        { label: t.footer.dataPolicy, href: '/data-policy' },
+        { label: t.footer.dataDeletion, href: '/data-deletion' },
+        { label: t.footer.riderTerms, href: '/terms/riders' },
+        { label: t.footer.driverTerms, href: '/terms/drivers' },
+        { label: t.footer.companyTerms, href: '/terms/company' },
       ],
     },
-  ]
+  ];
 }
 
 export function SiteHeader({ locale }: { locale: Locale }) {
-  const t = getDictionary(locale)
-  const navLinks = getNavLinks(t)
+  const t = getDictionary(locale);
+  const navLinks = getNavLinks(t);
+  const storeLinks = [
+    {
+      available: Boolean(siteConfig.iosAppUrl),
+      href: siteConfig.iosAppUrl,
+      icon: Apple,
+      label: 'iOS',
+    },
+    {
+      available: Boolean(siteConfig.androidAppUrl),
+      href: siteConfig.androidAppUrl,
+      icon: Play,
+      label: 'Android',
+    },
+  ];
   return (
-    <header className="sticky top-0 z-50 border-b border-white/70 bg-white/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href={withLocale("/", locale)} className="flex items-center gap-3">
+    <header className="sticky top-0 z-50 border-b border-white/70 bg-white/90 shadow-sm shadow-slate-950/5 backdrop-blur-xl supports-backdrop-filter:bg-white/75">
+      <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-3 px-4 py-2 sm:px-6 lg:px-8">
+        <Link
+          href={withLocale('/', locale)}
+          className="flex items-center gap-3"
+        >
           <Image
             src="/bandi-logo.png"
             alt="Bandi logo"
@@ -68,9 +86,33 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           ))}
         </nav>
         <div className="flex items-center gap-2">
+          <div className="hidden items-center gap-1 lg:flex">
+            {storeLinks.map(({ available, href, icon: Icon, label }) =>
+              available ? (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-black text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:text-sky-600"
+                >
+                  <Icon className="size-4" />
+                  {label}
+                </a>
+              ) : (
+                <span
+                  key={label}
+                  className="inline-flex cursor-not-allowed items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-black text-slate-400 shadow-sm"
+                >
+                  <Icon className="size-4" />
+                  {label}
+                </span>
+              ),
+            )}
+          </div>
           <LanguageSwitcher locale={locale} label={t.nav.language} />
           <Link
-            href={withLocale("/#join", locale)}
+            href={withLocale('/#join', locale)}
             className="hidden rounded-full bg-slate-950 px-5 py-2.5 text-sm font-black text-white shadow-lg shadow-slate-950/20 sm:inline-flex"
           >
             {t.nav.joinDriver}
@@ -82,8 +124,8 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 }
 
 export function SiteFooter({ locale }: { locale: Locale }) {
-  const t = getDictionary(locale)
-  const footerGroups = getFooterGroups(t)
+  const t = getDictionary(locale);
+  const footerGroups = getFooterGroups(t);
   return (
     <footer className="border-t border-slate-200 bg-white py-10">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
@@ -129,11 +171,11 @@ export function PublicShell({
   children,
   locale,
 }: {
-  children: React.ReactNode
-  locale: Locale
+  children: React.ReactNode;
+  locale: Locale;
 }) {
   return (
-    <main className="min-h-screen overflow-hidden bg-slate-50 text-slate-950">
+    <main className="min-h-screen bg-slate-50 text-slate-950">
       <SiteHeader locale={locale} />
       {children}
       <SiteFooter locale={locale} />

@@ -3,18 +3,93 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { siteConfig } from '@/lib/site-config'
 
+const siteTitle = 'Bandi — Fair rides for everyday mobility'
+const siteDescription =
+  'Bandi is a mobility platform for bike, auto and car rides with live tracking, locked fares, verified drivers, direct driver payment and 0% ride commission.'
+const siteUrl = siteConfig.siteUrl
+const previewImage = '/bandi-app-icon.png'
+
 export const metadata: Metadata = {
-  title: 'Bandi — Fair rides for everyday mobility',
-  description:
-    'Bandi is a mobility platform for bikes, autos and cars. Riders get live tracking and locked fares. Drivers keep 100% of ride fare.',
-  generator: 'Bandi',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bandi.app'),
-  openGraph: {
-    title: 'Bandi — Ride fair. Let drivers earn.',
-    description:
-      'Bike, auto and car ride platform by ' + siteConfig.companyName,
-    images: ['/bandi-app-icon.png'],
+  applicationName: siteConfig.brandName,
+  title: {
+    default: siteTitle,
+    template: `%s | ${siteConfig.brandName}`,
   },
+  description: siteDescription,
+  generator: 'Bandi',
+  metadataBase: new URL(siteUrl),
+  keywords: [
+    'Bandi',
+    'Bandi Mobility',
+    'ride booking app',
+    'bike taxi app',
+    'auto booking app',
+    'cab booking app',
+    'driver first mobility',
+    'zero commission rides',
+    'direct driver payment',
+    'verified drivers',
+    'live ride tracking',
+    'ride safety app',
+    'India mobility app',
+  ],
+  authors: [{ name: siteConfig.companyName, url: siteUrl }],
+  creator: siteConfig.companyName,
+  publisher: siteConfig.companyName,
+  category: 'transportation',
+  alternates: {
+    canonical: '/',
+    languages: {
+      en: '/?lang=en',
+      hi: '/?lang=hi',
+      te: '/?lang=te',
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    url: siteUrl,
+    siteName: siteConfig.brandName,
+    title: siteTitle,
+    description: siteDescription,
+    images: [
+      {
+        url: previewImage,
+        width: 1024,
+        height: 1024,
+        alt: `${siteConfig.brandName} app icon`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: siteDescription,
+    images: [previewImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  ...(siteConfig.iosAppId
+    ? {
+        appleWebApp: {
+          capable: true,
+          title: siteConfig.brandName,
+          statusBarStyle: 'default' as const,
+        },
+        itunes: {
+          appId: siteConfig.iosAppId,
+        },
+      }
+    : {}),
   icons: {
     icon: [
       {
@@ -44,9 +119,47 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${siteUrl}/#organization`,
+        name: siteConfig.companyName,
+        alternateName: siteConfig.brandName,
+        url: siteUrl,
+        logo: `${siteUrl}/bandi-logo.png`,
+        email: siteConfig.email,
+        telephone: siteConfig.phone,
+        address: siteConfig.address,
+        sameAs: [siteConfig.iosAppUrl, siteConfig.androidAppUrl].filter(Boolean),
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${siteUrl}/#website`,
+        name: siteConfig.brandName,
+        url: siteUrl,
+        publisher: { '@id': `${siteUrl}/#organization` },
+        inLanguage: ['en', 'hi', 'te'],
+      },
+      {
+        '@type': 'MobileApplication',
+        name: siteConfig.brandName,
+        applicationCategory: 'TravelApplication',
+        operatingSystem: 'iOS, Android',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
+        publisher: { '@id': `${siteUrl}/#organization` },
+      },
+    ],
+  }
+
   return (
     <html lang="en" className="bg-slate-50">
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

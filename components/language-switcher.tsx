@@ -1,41 +1,44 @@
-"use client"
+'use client';
 
-import Link from "next/link"
-import { usePathname, useSearchParams } from "next/navigation"
+import { Languages } from 'lucide-react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { localeNames, locales, type Locale } from "@/lib/i18n"
+import { localeNames, locales, type Locale } from '@/lib/i18n';
 
 export function LanguageSwitcher({
   locale,
   label,
 }: {
-  locale: Locale
-  label: string
+  locale: Locale;
+  label: string;
 }) {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   return (
-    <div className="flex items-center gap-1 rounded-full border border-slate-200 bg-white p-1 text-xs font-black shadow-sm">
+    <label className="relative inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-black text-slate-700 shadow-sm">
+      <Languages className="size-4 text-sky-500" />
       <span className="sr-only">{label}</span>
-      {locales.map((item) => {
-        const params = new URLSearchParams(searchParams.toString())
-        params.set("lang", item)
-        return (
-          <Link
-            key={item}
-            href={`${pathname}?${params.toString()}`}
-            title={localeNames[item]}
-            className={
-              item === locale
-                ? "rounded-full bg-sky-500 px-3 py-1.5 text-white"
-                : "rounded-full px-3 py-1.5 text-slate-500 hover:bg-sky-50 hover:text-sky-700"
-            }
-          >
-            {item.toUpperCase()}
-          </Link>
-        )
-      })}
-    </div>
-  )
+      <select
+        aria-label={label}
+        className="appearance-none bg-transparent pr-5 outline-none"
+        value={locale}
+        onChange={(event) => {
+          const params = new URLSearchParams(searchParams.toString());
+          params.set('lang', event.target.value);
+          router.push(`${pathname}?${params.toString()}`);
+        }}
+      >
+        {locales.map((item) => (
+          <option key={item} value={item}>
+            {localeNames[item]}
+          </option>
+        ))}
+      </select>
+      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+        ▾
+      </span>
+    </label>
+  );
 }
