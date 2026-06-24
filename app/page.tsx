@@ -4,13 +4,16 @@ import {
   ArrowRight,
   CheckCircle2,
   CircleHelp,
+  FileText,
   MapPin,
   MessageCircle,
   Phone,
+  ShieldCheck,
   Sparkles,
   Users,
 } from "lucide-react"
 
+import { AppDownloadButtons } from "@/components/app-download-buttons"
 import { ContactLeadForm, DriverLeadForm } from "@/components/lead-forms"
 import { PublicShell } from "@/components/public-shell"
 import { getDictionary, resolveLocale, withLocale } from "@/lib/i18n"
@@ -37,14 +40,43 @@ function SectionHeading({
   )
 }
 
+function Reveal({
+  children,
+  className = "",
+  id,
+}: {
+  children: React.ReactNode
+  className?: string
+  id?: string
+}) {
+  return <section id={id} className={`reveal-section ${className}`}>{children}</section>
+}
+
 function AppPreview({
   mode,
   copy,
 }: {
-  mode: "rider" | "partner"
+  mode: "rider" | "partner" | "safety" | "onboarding"
   copy: ReturnType<typeof getDictionary>["home"]
 }) {
   const isRider = mode === "rider"
+  const isPartner = mode === "partner"
+  const isSafety = mode === "safety"
+  const isOnboarding = mode === "onboarding"
+  const previewLabel = isRider
+    ? copy.riderPreview
+    : isSafety
+      ? copy.safetyPreview
+      : isOnboarding
+        ? copy.onboardingPreview
+        : copy.partnerPreview
+  const previewTitle = isRider
+    ? copy.driverOnWay
+    : isSafety
+      ? copy.sosReady
+      : isOnboarding
+        ? copy.docsVerified
+        : copy.rideProgress
   return (
     <div className="relative mx-auto w-[286px] rounded-[2.7rem] border-[11px] border-slate-950 bg-slate-950 shadow-2xl shadow-sky-950/30">
       <div className="absolute left-1/2 top-3 z-20 h-6 w-24 -translate-x-1/2 rounded-full bg-slate-950" />
@@ -62,24 +94,22 @@ function AppPreview({
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className="text-xs font-black uppercase tracking-widest text-slate-400">
-                  {isRider ? copy.riderPreview : copy.partnerPreview}
+                  {previewLabel}
                 </p>
-                <h3 className="mt-1 text-lg font-black text-slate-950">
-                  {isRider ? copy.driverOnWay : copy.rideProgress}
-                </h3>
+                <h3 className="mt-1 text-lg font-black text-slate-950">{previewTitle}</h3>
               </div>
               <p className="rounded-full bg-emerald-100 px-3 py-1 text-sm font-black text-emerald-600">
-                {isRider ? "4 min" : "₹450"}
+                {isRider ? "4 min" : isPartner ? "₹450" : isSafety ? "SOS" : "OK"}
               </p>
             </div>
           </div>
 
           <Image
-            src={isRider ? "/vehicle-sedan.png" : "/vehicle-auto.png"}
-            alt={isRider ? "Vehicle moving on rider map preview" : "Vehicle moving on partner map preview"}
+            src={isRider || isSafety ? "/vehicle-sedan.png" : "/vehicle-auto.png"}
+            alt="Bandi app map preview"
             width={110}
             height={110}
-            className={isRider ? "absolute left-28 top-64 h-20 w-20 rotate-[-18deg] object-contain drop-shadow-2xl" : "absolute left-24 top-64 h-24 w-24 rotate-[22deg] object-contain drop-shadow-2xl"}
+            className={isRider || isSafety ? "absolute left-28 top-64 h-20 w-20 rotate-[-18deg] object-contain drop-shadow-2xl" : "absolute left-24 top-64 h-24 w-24 rotate-[22deg] object-contain drop-shadow-2xl"}
           />
 
           <div className="absolute bottom-0 left-0 right-0 rounded-t-[2rem] bg-white p-5 shadow-2xl">
@@ -101,6 +131,36 @@ function AppPreview({
                   <p className="text-xs font-bold uppercase tracking-widest text-sky-700">{copy.startPin}</p>
                   <p className="mt-1 text-3xl font-black tracking-[0.35em] text-slate-950">8901</p>
                   <p className="mt-1 text-xs text-slate-500">{copy.pinHelp}</p>
+                </div>
+              </>
+            ) : isSafety ? (
+              <>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="rounded-2xl bg-rose-50 p-4 text-rose-600">
+                    <ShieldCheck className="size-6" />
+                    <p className="mt-3 text-sm font-black">{copy.sosReady}</p>
+                  </div>
+                  <div className="rounded-2xl bg-sky-50 p-4 text-sky-600">
+                    <Users className="size-6" />
+                    <p className="mt-3 text-sm font-black">{copy.verifiedDriver}</p>
+                  </div>
+                </div>
+                <div className="mt-4 rounded-2xl bg-slate-50 p-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{copy.paymentDirect}</p>
+                  <p className="mt-1 text-lg font-black text-slate-950">UPI · Cash · Driver details</p>
+                </div>
+              </>
+            ) : isOnboarding ? (
+              <>
+                <div className="space-y-3">
+                  {[copy.docsVerified, copy.profileApproved, copy.paymentDirect].map((item) => (
+                    <div key={item} className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
+                      <span className="flex size-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
+                        <FileText className="size-5" />
+                      </span>
+                      <p className="text-sm font-black text-slate-950">{item}</p>
+                    </div>
+                  ))}
                 </div>
               </>
             ) : (
@@ -128,7 +188,6 @@ export default async function Page({
   const locale = resolveLocale(await searchParams)
   const t = getDictionary(locale)
   const {
-    appStoreDetails,
     driverFeatures,
     faqs,
     riderFeatures,
@@ -138,7 +197,7 @@ export default async function Page({
   } = getPublicContent(locale)
   return (
     <PublicShell locale={locale}>
-      <section id="top" className="relative">
+      <Reveal id="top" className="relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_10%,#7dd3fc_0,transparent_32%),radial-gradient(circle_at_80%_20%,#bae6fd_0,transparent_28%)]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-28">
           <div>
@@ -164,6 +223,13 @@ export default async function Page({
                 {t.home.learn}
               </Link>
             </div>
+            <AppDownloadButtons
+              androidEyebrow={t.home.androidEyebrow}
+              androidLabel={t.home.androidLabel}
+              className="mt-5"
+              iosEyebrow={t.home.iosEyebrow}
+              iosLabel={t.home.iosLabel}
+            />
             <div className="mt-8 grid max-w-2xl grid-cols-3 gap-3">
               {t.home.stats.map(([value, label]) => (
                 <div key={label} className="rounded-3xl border border-white/80 bg-white/70 p-4 shadow-sm backdrop-blur">
@@ -181,9 +247,9 @@ export default async function Page({
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section id="why-bandi" className="bg-white py-20">
+      <Reveal id="why-bandi" className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow={t.home.whyEyebrow}
@@ -203,48 +269,55 @@ export default async function Page({
             })}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section id="riders" className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={t.home.riderEyebrow}
-            title={t.home.riderTitle}
-            text={t.home.riderText}
-          />
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {riderFeatures.map(([title, text, Icon]) => (
-              <div key={title as string} className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-                <Icon className="size-8 text-sky-500" />
-                <h3 className="mt-5 text-lg font-black">{title as string}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{text as string}</p>
-              </div>
-            ))}
+      <Reveal id="riders" className="py-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
+          <div>
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-500">{t.home.riderEyebrow}</p>
+            <h2 className="mt-3 text-balance text-4xl font-black tracking-tight text-slate-950 md:text-5xl">{t.home.riderTitle}</h2>
+            <p className="mt-4 text-pretty text-lg leading-8 text-slate-600">{t.home.riderText}</p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {riderFeatures.map(([title, text, Icon]) => (
+                <div key={title as string} className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+                  <Icon className="size-8 text-sky-500" />
+                  <h3 className="mt-5 text-lg font-black">{title as string}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{text as string}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative">
+            <div className="absolute inset-8 rounded-full bg-sky-200 blur-3xl" />
+            <AppPreview mode="rider" copy={t.home} />
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section id="drivers" className="bg-slate-950 py-20 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={t.home.driverEyebrow}
-            title={t.home.driverTitle}
-            text={t.home.driverText}
-            dark
-          />
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {driverFeatures.map(([title, text, Icon]) => (
-              <div key={title as string} className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
-                <Icon className="size-8 text-sky-300" />
-                <h3 className="mt-5 text-lg font-black text-white">{title as string}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-300">{text as string}</p>
-              </div>
-            ))}
+      <Reveal id="drivers" className="bg-slate-950 py-20 text-white">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+          <div className="relative order-2 lg:order-1">
+            <div className="absolute inset-8 rounded-full bg-sky-500/30 blur-3xl" />
+            <AppPreview mode="partner" copy={t.home} />
+          </div>
+          <div className="order-1 lg:order-2">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-300">{t.home.driverEyebrow}</p>
+            <h2 className="mt-3 text-balance text-4xl font-black tracking-tight text-white md:text-5xl">{t.home.driverTitle}</h2>
+            <p className="mt-4 text-pretty text-lg leading-8 text-slate-300">{t.home.driverText}</p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {driverFeatures.map(([title, text, Icon]) => (
+                <div key={title as string} className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
+                  <Icon className="size-8 text-sky-300" />
+                  <h3 className="mt-5 text-lg font-black text-white">{title as string}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">{text as string}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="py-20">
+      <Reveal className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow={t.home.vehiclesEyebrow}
@@ -261,52 +334,36 @@ export default async function Page({
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section id="safety" className="bg-white py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <Reveal id="safety" className="bg-white py-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-500">{t.home.safetyEyebrow}</p>
             <h2 className="mt-3 text-4xl font-black tracking-tight">{t.home.safetyTitle}</h2>
             <p className="mt-4 text-lg leading-8 text-slate-600">
               {t.home.safetyText}
             </p>
-          </div>
-          <div className="grid gap-4">
-            {safetyItems.map(([Icon, text]) => (
-              <div key={text as string} className="flex items-center gap-4 rounded-3xl bg-slate-50 p-5">
-                <div className="flex size-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-600">
-                  <Icon className="size-6" />
+            <div className="mt-8 grid gap-4">
+              {safetyItems.map(([Icon, text]) => (
+                <div key={text as string} className="flex items-center gap-4 rounded-3xl bg-slate-50 p-5">
+                  <div className="flex size-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-600">
+                    <Icon className="size-6" />
+                  </div>
+                  <p className="font-black">{text as string}</p>
                 </div>
-                <p className="font-black">{text as string}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+          <AppPreview mode="safety" copy={t.home} />
         </div>
-      </section>
+      </Reveal>
 
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={t.home.publishingEyebrow}
-            title={t.home.publishingTitle}
-            text={t.home.publishingText}
-          />
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {appStoreDetails.map(([label, href, Icon]) => (
-              <Link key={href as string} href={withLocale(href as string, locale)} className="flex items-center gap-4 rounded-3xl border border-slate-200 bg-white p-5 font-black shadow-sm hover:border-sky-300">
-                <span className="flex size-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-600">
-                  <Icon className="size-6" />
-                </span>
-                {label as string}
-              </Link>
-            ))}
+      <Reveal id="join" className="py-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[.85fr_1fr] lg:px-8">
+          <div className="hidden lg:block">
+            <AppPreview mode="onboarding" copy={t.home} />
           </div>
-        </div>
-      </section>
-
-      <section id="join" className="py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-500">{t.home.onboardingEyebrow}</p>
             <h2 className="mt-3 text-4xl font-black tracking-tight">{t.home.onboardingTitle}</h2>
@@ -320,12 +377,14 @@ export default async function Page({
                 </li>
               ))}
             </ul>
+            <div className="mt-8">
+              <DriverLeadForm locale={locale} />
+            </div>
           </div>
-          <DriverLeadForm locale={locale} />
         </div>
-      </section>
+      </Reveal>
 
-      <section id="faq" className="bg-slate-100 py-20">
+      <Reveal id="faq" className="bg-slate-100 py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <SectionHeading eyebrow={t.home.faqEyebrow} title={t.home.faqTitle} />
           <div className="mt-10 grid gap-4">
@@ -345,9 +404,9 @@ export default async function Page({
             </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section id="contact" className="py-20">
+      <Reveal id="contact" className="py-20">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div className="rounded-[2rem] bg-sky-500 p-8 text-white">
             <Sparkles className="size-10" />
@@ -360,7 +419,7 @@ export default async function Page({
           </div>
           <ContactLeadForm locale={locale} />
         </div>
-      </section>
+      </Reveal>
     </PublicShell>
   )
 }

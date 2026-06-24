@@ -1,7 +1,6 @@
 import {
   BadgeCheck,
   Bell,
-  CircleHelp,
   CreditCard,
   FileText,
   LifeBuoy,
@@ -11,7 +10,6 @@ import {
   ShieldCheck,
   Star,
   Timer,
-  Users,
   Wallet,
   Zap,
 } from "lucide-react"
@@ -52,7 +50,7 @@ export const footerGroups = [
 
 export const vehicleTypes = [
   { name: "Bike", image: "/vehicle-bike.png", text: "Fast solo rides for short city trips." },
-  { name: "Auto", image: "/vehicle-auto.png", text: "Everyday Hyderabad rides with fair pricing." },
+  { name: "Auto", image: "/vehicle-auto.png", text: "Everyday rides with fair pricing." },
   { name: "Sedan", image: "/vehicle-sedan.png", text: "Comfortable cars for daily commutes." },
   { name: "Premium", image: "/vehicle-premium.png", text: "Better vehicles for special trips." },
   { name: "XL", image: "/vehicle-xl.png", text: "More seats and space for family rides." },
@@ -89,8 +87,8 @@ export const whyBandi = [
     icon: LifeBuoy,
   },
   {
-    title: "Hyderabad-first operations",
-    text: "Bandi starts with local geography, Telugu/Hindi/English support, vehicle categories, and driver onboarding rules designed around Indian city mobility.",
+    title: "Built for real operations",
+    text: "Bandi is designed for local geography, multilingual support, vehicle categories, and driver onboarding rules that can scale across markets.",
     icon: MapPin,
   },
 ]
@@ -158,15 +156,6 @@ export const faqs = [
   },
 ]
 
-export const appStoreDetails = [
-  ["Privacy policy URL", "/privacy", ShieldCheck],
-  ["Terms and conditions", "/terms/riders", FileText],
-  ["Support URL", "/support", LifeBuoy],
-  ["Data deletion request", "/data-deletion", Users],
-  ["Contact information", "/contact", Bell],
-  ["FAQ / help", "/faq", CircleHelp],
-]
-
 export const safetyItems = [
   [ShieldCheck, "Verified drivers and documents"],
   [Bell, "In-app notifications for ride status"],
@@ -182,7 +171,7 @@ export function getPublicContent(locale: Locale) {
     return {
       vehicleTypes: [
         { name: "Bike", image: "/vehicle-bike.png", text: "Short city trips के लिए fast solo rides." },
-        { name: "Auto", image: "/vehicle-auto.png", text: "Daily Hyderabad rides with fair pricing." },
+        { name: "Auto", image: "/vehicle-auto.png", text: "Daily rides with fair pricing." },
         { name: "Sedan", image: "/vehicle-sedan.png", text: "Daily commute के लिए comfortable cars." },
         { name: "Premium", image: "/vehicle-premium.png", text: "Special trips के लिए बेहतर vehicles." },
         { name: "XL", image: "/vehicle-xl.png", text: "Family rides के लिए ज्यादा seats और space." },
@@ -203,17 +192,9 @@ export function getPublicContent(locale: Locale) {
         { ...whyBandi[0], title: "Fare driver का", text: "Rider fare direct driver को जाता है. Platform transparent subscription fees से चलता है." },
         { ...whyBandi[1], title: "Clear ride closure", text: "Start और end PIN pickup, payment confirmation और completion confusion कम करते हैं." },
         { ...whyBandi[2], title: "Support team ready", text: "Status, notifications, cancellations, SOS, ratings और traces admin review के लिए available हैं." },
-        { ...whyBandi[3], title: "Hyderabad-first", text: "Local geography, Telugu/Hindi/English support और Indian city mobility workflows ध्यान में रखकर बनाया गया." },
+        { ...whyBandi[3], title: "Operations-ready", text: "Local geography, multilingual support और Indian city mobility workflows ध्यान में रखकर बनाया गया." },
       ],
       faqs,
-      appStoreDetails: [
-        [t.footer.privacy, "/privacy", ShieldCheck],
-        [t.footer.riderTerms, "/terms/riders", FileText],
-        [t.footer.support, "/support", LifeBuoy],
-        [t.footer.dataDeletion, "/data-deletion", Users],
-        [t.footer.contact, "/contact", Bell],
-        [t.footer.faq, "/faq", CircleHelp],
-      ],
       safetyItems: [
         [ShieldCheck, "Verified drivers और documents"],
         [Bell, "Ride status के लिए in-app notifications"],
@@ -228,7 +209,7 @@ export function getPublicContent(locale: Locale) {
     return {
       vehicleTypes: [
         { name: "Bike", image: "/vehicle-bike.png", text: "Short city trips కోసం fast solo rides." },
-        { name: "Auto", image: "/vehicle-auto.png", text: "Fair pricing తో everyday Hyderabad rides." },
+        { name: "Auto", image: "/vehicle-auto.png", text: "Fair pricing తో everyday rides." },
         { name: "Sedan", image: "/vehicle-sedan.png", text: "Daily commute కోసం comfortable cars." },
         { name: "Premium", image: "/vehicle-premium.png", text: "Special trips కోసం better vehicles." },
         { name: "XL", image: "/vehicle-xl.png", text: "Family rides కోసం more seats and space." },
@@ -249,17 +230,9 @@ export function getPublicContent(locale: Locale) {
         { ...whyBandi[0], title: "Fare driver కి", text: "Rider fare direct driver కి వెళ్తుంది. Platform transparent subscription fees తో నడుస్తుంది." },
         { ...whyBandi[1], title: "Clear ride closure", text: "Start/end PIN pickup, payment confirmation, completion confusion తగ్గిస్తాయి." },
         { ...whyBandi[2], title: "Support team ready", text: "Status, notifications, cancellations, SOS, ratings, traces admin review కోసం available." },
-        { ...whyBandi[3], title: "Hyderabad-first", text: "Local geography, Telugu/Hindi/English support, Indian city mobility workflows కోసం build చేసింది." },
+        { ...whyBandi[3], title: "Operations-ready", text: "Local geography, multilingual support, Indian city mobility workflows కోసం build చేసింది." },
       ],
       faqs,
-      appStoreDetails: [
-        [t.footer.privacy, "/privacy", ShieldCheck],
-        [t.footer.riderTerms, "/terms/riders", FileText],
-        [t.footer.support, "/support", LifeBuoy],
-        [t.footer.dataDeletion, "/data-deletion", Users],
-        [t.footer.contact, "/contact", Bell],
-        [t.footer.faq, "/faq", CircleHelp],
-      ],
       safetyItems: [
         [ShieldCheck, "Verified drivers మరియు documents"],
         [Bell, "Ride status కోసం in-app notifications"],
@@ -276,7 +249,6 @@ export function getPublicContent(locale: Locale) {
     driverFeatures,
     whyBandi,
     faqs,
-    appStoreDetails,
     safetyItems,
   }
 }

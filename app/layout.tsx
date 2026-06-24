@@ -4,15 +4,15 @@ import './globals.css'
 import { siteConfig } from '@/lib/site-config'
 
 export const metadata: Metadata = {
-  title: 'Bandi — Fair rides for Hyderabad',
+  title: 'Bandi — Fair rides for everyday mobility',
   description:
-    'Bandi is a Hyderabad-first mobility platform for bikes, autos and cars. Riders get live tracking and locked fares. Drivers keep 100% of ride fare.',
+    'Bandi is a mobility platform for bikes, autos and cars. Riders get live tracking and locked fares. Drivers keep 100% of ride fare.',
   generator: 'Bandi',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bandi.app'),
   openGraph: {
     title: 'Bandi — Ride fair. Let drivers earn.',
     description:
-      'Hyderabad-first bike, auto and car ride platform by ' + siteConfig.companyName,
+      'Bike, auto and car ride platform by ' + siteConfig.companyName,
     images: ['/bandi-app-icon.png'],
   },
   icons: {
