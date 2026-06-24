@@ -24,14 +24,19 @@ export function InfoCard({
 }
 
 export function TextSection({
+  id,
   title,
   children,
 }: {
+  id?: string
   title: string
   children: React.ReactNode
 }) {
   return (
-    <section className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+    <section
+      id={id}
+      className="scroll-mt-24 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm md:p-8"
+    >
       <h2 className="text-2xl font-black tracking-tight text-slate-950">{title}</h2>
       <div className="mt-4 space-y-4 text-sm leading-7 text-slate-600">{children}</div>
     </section>

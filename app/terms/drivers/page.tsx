@@ -28,7 +28,7 @@ export default async function DriverTermsPage({
             ]}
           />
         </TextSection>
-        <TextSection title="Ride operations">
+        <TextSection id="behaviour" title="Ride operations">
           <p>
             When online, you may receive ride requests based on location, vehicle type, availability, rating, acceptance,
             and dispatch rules. You must move toward pickup after accepting, mark arrival only when actually near the
@@ -36,7 +36,7 @@ export default async function DriverTermsPage({
             end PIN.
           </p>
         </TextSection>
-        <TextSection title="Wallet and platform fees">
+        <TextSection id="refunds" title="Wallet and platform fees">
           <p>
             Bandi may charge platform or subscription fees to the driver wallet as configured. Rider trip fare is intended
             to be paid directly to you. Wallet recharges, deductions, refunds, settlements, and failed payments may be
@@ -71,7 +71,7 @@ export default async function DriverTermsPage({
             may lead to account review.
           </p>
         </TextSection>
-        <TextSection title="Account closure and settlement">
+        <TextSection id="bans" title="Account closure and settlement">
           <p>
             If you request deactivation, Bandi may restrict login or online access while the account is under settlement
             review. Admins may verify wallet balance, pending rides, disputes, and saved payment details before final
