@@ -11,6 +11,7 @@ const routes = [
   '/privacy',
   '/data-policy',
   '/data-deletion',
+  '/invite',
   '/terms/riders',
   '/terms/drivers',
   '/terms/company',

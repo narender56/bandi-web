@@ -1,13 +1,14 @@
-import { Analytics } from '@vercel/analytics/next'
-import type { Metadata, Viewport } from 'next'
-import './globals.css'
-import { siteConfig } from '@/lib/site-config'
+import { Analytics } from '@vercel/analytics/next';
+import type { Metadata, Viewport } from 'next';
+import './globals.css';
+import { siteConfig } from '@/lib/site-config';
+import { Toaster } from '@/components/ui/toast';
 
-const siteTitle = 'Bandi — Fair rides for everyday mobility'
+const siteTitle = 'Bandi — Fair rides for everyday mobility';
 const siteDescription =
-  'Bandi is a mobility platform for bike, auto and car rides with live tracking, locked fares, verified drivers, direct driver payment and 0% ride commission.'
-const siteUrl = siteConfig.siteUrl
-const previewImage = '/bandi-app-icon.png'
+  'Bandi is a mobility platform for bike, auto and car rides with live tracking, locked fares, verified drivers, direct driver payment and 0% ride commission.';
+const siteUrl = siteConfig.siteUrl;
+const previewImage = '/bandi-app-icon.png';
 
 export const metadata: Metadata = {
   applicationName: siteConfig.brandName,
@@ -107,17 +108,17 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
-}
+};
 
 export const viewport: Viewport = {
   colorScheme: 'light',
   themeColor: '#0ea5e9',
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   const structuredData = {
     '@context': 'https://schema.org',
@@ -132,7 +133,9 @@ export default function RootLayout({
         email: siteConfig.email,
         telephone: siteConfig.phone,
         address: siteConfig.address,
-        sameAs: [siteConfig.iosAppUrl, siteConfig.androidAppUrl].filter(Boolean),
+        sameAs: [siteConfig.iosAppUrl, siteConfig.androidAppUrl].filter(
+          Boolean,
+        ),
       },
       {
         '@type': 'WebSite',
@@ -151,7 +154,7 @@ export default function RootLayout({
         publisher: { '@id': `${siteUrl}/#organization` },
       },
     ],
-  }
+  };
 
   return (
     <html lang="en" className="bg-slate-50">
@@ -162,7 +165,8 @@ export default function RootLayout({
         />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        <Toaster />
       </body>
     </html>
-  )
+  );
 }

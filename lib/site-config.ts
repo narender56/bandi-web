@@ -1,5 +1,5 @@
 export const siteConfig = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bandi.app',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mybandi.in',
   companyName:
     process.env.NEXT_PUBLIC_COMPANY_NAME ?? 'Bandi Mobility Private Limited',
   brandName: process.env.NEXT_PUBLIC_BRAND_NAME ?? 'Bandi',
