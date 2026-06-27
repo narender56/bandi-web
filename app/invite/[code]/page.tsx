@@ -17,8 +17,7 @@ import { CopyButton } from '@/components/copy-button';
 
 export const dynamic = 'force-dynamic';
 
-const SUPABASE_URL =
-  process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL;
+const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 type InviteDriver = {
