@@ -135,6 +135,22 @@ export const faqs = [
     a: "Cancellation reason and actor are recorded. If a driver cancels after accepting, the rider can choose whether to search for another driver. Notifications and support trails are created where needed.",
   },
   {
+    q: "What if I need to end the ride in the middle?",
+    a: "You can end a ride mid-trip. You pay for the distance used so far plus a small closing fee (a percentage of the remaining estimate), shown before you confirm. You'll also be asked the reason, and if something went wrong you can flag it so the Bandi team reviews the ride.",
+  },
+  {
+    q: "What happens if I'm not at the pickup point (no-show)?",
+    a: "If you're not at the pickup and not reachable, the driver waits a short grace period, tries to call you, and can then report a no-show, which cancels the ride. A no-show is not penalised automatically — it opens a case that the Bandi team reviews (looking at GPS, wait time, and call records). After review, a small no-show fee may apply before you can book again. Genuine cases (driver never arrived, wrong location) are not charged.",
+  },
+  {
+    q: "What if the driver ends the ride early?",
+    a: "If the driver has a vehicle breakdown, you are not charged and Bandi looks for another driver from your current location. If the driver ends a ride for a safety or other reason, the case is escalated to the Bandi team for review before any charge or action.",
+  },
+  {
+    q: "Can I dispute a charge or a block?",
+    a: "Yes. When ending a ride you can flag that you need help, and a blocked account shows how to contact us. The Bandi team reviews each case manually — no fee or block is applied without a human review.",
+  },
+  {
     q: "What happens if there is a payment dispute?",
     a: "Bandi stores ride status, payment confirmation context, PIN workflow, support reports, notifications, and admin audit trails. The operations team can review the case and contact both parties.",
   },
