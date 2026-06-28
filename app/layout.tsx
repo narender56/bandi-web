@@ -4,9 +4,9 @@ import './globals.css';
 import { siteConfig } from '@/lib/site-config';
 import { Toaster } from '@/components/ui/toast';
 
-const siteTitle = 'Bandi — Fair rides for everyday mobility';
+const siteTitle = 'Bandi — Zero commission rides launching August 15';
 const siteDescription =
-  'Bandi is a mobility platform for bike, auto and car rides with live tracking, locked fares, verified drivers, direct driver payment and 0% ride commission.';
+  'Bandi is launching August 15 with zero ride commission, one month free subscription for approved drivers, no surge for riders, direct driver payment, verified bike, auto and cab rides, live tracking and safety tools.';
 const siteUrl = siteConfig.siteUrl;
 const previewImage = '/bandi-app-icon.png';
 
@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     'auto booking app',
     'cab booking app',
     'driver first mobility',
+    'August 15 launch',
+    'one month free driver subscription',
+    'no surge rides',
     'zero commission rides',
     'direct driver payment',
     'verified drivers',

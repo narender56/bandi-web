@@ -76,10 +76,16 @@ export const dictionary = {
       requestCall: "Request onboarding call",
     },
     home: {
-      launch: "Built for fair everyday mobility",
-      heroTitle: "Ride fair.\nLet drivers earn.",
+      launch: "Launching August 15",
+      launchKicker: "Dedicated to India's hardworking bike, auto and cab drivers",
+      heroTitle: "Freedom from commission.\nFair rides for everyone.",
       heroText:
-        "Bandi is a mobility platform for bike, auto, and car rides. Riders get live tracking, locked fares, safety tools, and saved driver payment details. Drivers keep 100% of ride fare.",
+        "Bandi is launching as a driver-first mobility platform where drivers keep 100% of the ride fare and riders pay cleaner prices because we do not add ride commission. No surge. Direct driver payment. Verified rides from bike, auto and car partners.",
+      freedomLine:
+        "This Independence Day, Bandi is built for the people who keep cities moving.",
+      freeMonth: "Every approved driver gets 1 month free subscription at launch.",
+      noSurge: "No surge pricing for riders",
+      choosePrice: "Drivers can choose their preferred pricing profile",
       join: "Join as driver",
       learn: "Learn about Bandi",
       iosEyebrow: "Download on",
@@ -88,8 +94,33 @@ export const dictionary = {
       androidLabel: "Google Play",
       stats: [
         ["0%", "ride commission"],
+        ["1 month", "free for drivers"],
+        ["No", "surge pricing"],
+      ],
+      launchStats: [
+        ["100%", "fare stays with driver"],
+        ["₹0", "commission on every ride"],
+        ["Aug 15", "public launch campaign"],
+      ],
+      dedicationTitle: "To the drivers who start before sunrise and finish after the city sleeps.",
+      dedicationText:
+        "Bandi is our thank-you to cab, auto, and bike drivers who work through heat, rain, traffic, airport runs, late nights, and early mornings. We are building a platform where the fare respects the person doing the ride.",
+      savingsTitle: "Why riders should pay less",
+      savingsText:
+        "When a platform does not take a commission from every ride, the price can be cleaner. Riders see fair ride options and drivers receive the fare directly.",
+      fareComparison: [
+        ["Other platforms", "Fare + commission + surge pressure"],
+        ["Bandi", "Fare paid directly to driver + no surge"],
+      ],
+      ledgerRows: [
+        ["Ride fare", "₹250"],
+        ["Platform commission", "₹0"],
+        ["Driver receives", "₹250"],
+      ],
+      driverLaunchOffer: [
         ["100%", "fare to driver"],
-        ["6", "vehicle categories"],
+        ["1 month", "free subscription"],
+        ["Choose", "your price profile"],
       ],
       whyEyebrow: "Why Bandi is better",
       whyTitle: "Less platform noise. More trust in the actual ride.",
@@ -250,10 +281,15 @@ export const dictionary = {
       requestCall: "Onboarding call request करें",
     },
     home: {
-      launch: "Fair everyday mobility के लिए बना",
-      heroTitle: "Fair ride.\nDriver की कमाई सुरक्षित.",
+      launch: "15 August launch",
+      launchKicker: "India के मेहनती bike, auto और cab drivers को समर्पित",
+      heroTitle: "Commission से आज़ादी.\nसबके लिए fair rides.",
       heroText:
-        "Bandi bike, auto और car rides के लिए mobility platform है. Riders को live tracking, locked fare, safety tools और driver payment details मिलते हैं. Drivers ride fare का 100% रखते हैं.",
+        "Bandi एक driver-first mobility platform है जहाँ drivers ride fare का 100% रखते हैं और riders को cleaner prices मिलते हैं क्योंकि हम ride commission नहीं लेते. No surge. Direct driver payment. Verified bike, auto और car partners.",
+      freedomLine: "इस Independence Day, Bandi उन लोगों के लिए बना है जो शहर को चलाते हैं.",
+      freeMonth: "Launch पर हर approved driver को 1 month free subscription.",
+      noSurge: "Riders के लिए no surge pricing",
+      choosePrice: "Drivers अपना preferred pricing profile चुन सकते हैं",
       join: "ड्राइवर बनें",
       learn: "Bandi के बारे में जानें",
       iosEyebrow: "Download on",
@@ -262,8 +298,33 @@ export const dictionary = {
       androidLabel: "Google Play",
       stats: [
         ["0%", "ride commission"],
+        ["1 month", "drivers के लिए free"],
+        ["No", "surge pricing"],
+      ],
+      launchStats: [
         ["100%", "fare driver को"],
-        ["6", "vehicle categories"],
+        ["₹0", "हर ride पर commission"],
+        ["Aug 15", "public launch campaign"],
+      ],
+      dedicationTitle: "उन drivers के लिए जो सूरज से पहले शुरू करते हैं और शहर के बाद रुकते हैं.",
+      dedicationText:
+        "Bandi cab, auto और bike drivers को thank-you है — heat, rain, traffic, airport runs, late nights और early mornings में काम करने वाले लोगों के लिए.",
+      savingsTitle: "Riders कम क्यों pay करें",
+      savingsText:
+        "जब platform हर ride से commission नहीं लेता, price cleaner हो सकता है. Riders fair options देखते हैं और drivers fare direct receive करते हैं.",
+      fareComparison: [
+        ["Other platforms", "Fare + commission + surge pressure"],
+        ["Bandi", "Fare direct driver को + no surge"],
+      ],
+      ledgerRows: [
+        ["Ride fare", "₹250"],
+        ["Platform commission", "₹0"],
+        ["Driver receives", "₹250"],
+      ],
+      driverLaunchOffer: [
+        ["100%", "fare driver को"],
+        ["1 month", "free subscription"],
+        ["Choose", "price profile"],
       ],
       whyEyebrow: "Bandi क्यों बेहतर",
       whyTitle: "कम confusion. Ride में ज्यादा भरोसा.",
@@ -381,10 +442,15 @@ export const dictionary = {
       requestCall: "Onboarding call request చేయండి",
     },
     home: {
-      launch: "Fair everyday mobility కోసం build చేసింది",
-      heroTitle: "Fair ride.\nDriver earning కి గౌరవం.",
+      launch: "August 15 launch",
+      launchKicker: "India hardworking bike, auto, cab drivers కి అంకితం",
+      heroTitle: "Commission నుండి freedom.\nఅందరికీ fair rides.",
       heroText:
-        "Bandi bike, auto, car rides కోసం mobility platform. Riders కి live tracking, locked fares, safety tools, driver payment details. Drivers ride fare 100% ఉంచుకుంటారు.",
+        "Bandi driver-first mobility platform. Drivers ride fare 100% ఉంచుకుంటారు, riders cleaner prices pay చేస్తారు ఎందుకంటే మేము ride commission తీసుకోము. No surge. Direct driver payment. Verified bike, auto, car partners.",
+      freedomLine: "ఈ Independence Day, city ని move చేసే drivers కోసం Bandi.",
+      freeMonth: "Launch లో ప్రతి approved driver కి 1 month free subscription.",
+      noSurge: "Riders కోసం no surge pricing",
+      choosePrice: "Drivers తమ preferred pricing profile ఎంచుకోవచ్చు",
       join: "డ్రైవర్‌గా చేరండి",
       learn: "Bandi గురించి తెలుసుకోండి",
       iosEyebrow: "Download on",
@@ -393,8 +459,33 @@ export const dictionary = {
       androidLabel: "Google Play",
       stats: [
         ["0%", "ride commission"],
+        ["1 month", "drivers కి free"],
+        ["No", "surge pricing"],
+      ],
+      launchStats: [
         ["100%", "fare driver కి"],
-        ["6", "vehicle categories"],
+        ["₹0", "ప్రతి ride commission"],
+        ["Aug 15", "public launch campaign"],
+      ],
+      dedicationTitle: "సూర్యుడు రాకముందే మొదలుపెట్టి, city నిద్రపోయాక ఆపే drivers కోసం.",
+      dedicationText:
+        "Heat, rain, traffic, airport runs, late nights, early mornings లో పని చేసే cab, auto, bike drivers కి Bandi ఒక thank-you.",
+      savingsTitle: "Riders ఎందుకు తక్కువ pay చేయాలి",
+      savingsText:
+        "Platform ప్రతి ride మీద commission తీసుకోకపోతే price cleaner గా ఉంటుంది. Riders fair options చూస్తారు, drivers fare direct receive చేస్తారు.",
+      fareComparison: [
+        ["Other platforms", "Fare + commission + surge pressure"],
+        ["Bandi", "Fare direct driver కి + no surge"],
+      ],
+      ledgerRows: [
+        ["Ride fare", "₹250"],
+        ["Platform commission", "₹0"],
+        ["Driver receives", "₹250"],
+      ],
+      driverLaunchOffer: [
+        ["100%", "fare driver కి"],
+        ["1 month", "free subscription"],
+        ["Choose", "price profile"],
       ],
       whyEyebrow: "Bandi ఎందుకు better",
       whyTitle: "తక్కువ confusion. Ride మీద ఎక్కువ trust.",

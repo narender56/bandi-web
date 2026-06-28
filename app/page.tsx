@@ -5,12 +5,18 @@ import {
   CheckCircle2,
   CircleHelp,
   FileText,
+  Gift,
+  HandHeart,
+  IndianRupee,
   MapPin,
   MessageCircle,
+  Percent,
   Phone,
+  Route,
   ShieldCheck,
   Sparkles,
   Users,
+  Wallet,
 } from 'lucide-react';
 
 import { AppDownloadButtons } from '@/components/app-download-buttons';
@@ -247,6 +253,203 @@ function AppPreview({
   );
 }
 
+function LaunchPoster({ copy }: { copy: ReturnType<typeof getDictionary>['home'] }) {
+  return (
+    <div className="relative mx-auto max-w-xl">
+      <div className="absolute -inset-8 rounded-[3rem] bg-sky-300/30 blur-3xl" />
+      <div className="relative overflow-hidden rounded-[2.5rem] border border-white/70 bg-slate-950 p-5 shadow-2xl shadow-sky-950/25">
+        <div className="absolute inset-0 grid-bg opacity-40" />
+        <div className="absolute -right-24 -top-24 size-64 rounded-full bg-sky-400/30 blur-2xl" />
+        <div className="absolute -bottom-28 left-10 size-72 rounded-full bg-cyan-300/20 blur-3xl" />
+        <div className="relative rounded-[2rem] border border-white/10 bg-white/10 p-5 text-white backdrop-blur">
+          <div className="flex items-center justify-between gap-4">
+            <div className="rounded-2xl bg-white p-2">
+              <Image
+                src="/bandi-app-icon.png"
+                alt="Bandi app icon"
+                width={56}
+                height={56}
+                className="rounded-xl"
+              />
+            </div>
+            <div className="rounded-full bg-emerald-400 px-4 py-2 text-sm font-black text-slate-950">
+              {copy.launch}
+            </div>
+          </div>
+          <p className="mt-8 max-w-sm text-sm font-black uppercase tracking-[0.22em] text-sky-200">
+            {copy.launchKicker}
+          </p>
+          <h3 className="mt-4 text-balance text-4xl font-black leading-[0.95] tracking-tight md:text-5xl">
+            {copy.freedomLine}
+          </h3>
+          <div className="mt-8 grid gap-3">
+            {[copy.freeMonth, copy.noSurge, copy.choosePrice].map((item, i) => (
+              <div
+                key={item}
+                className="flex items-center gap-3 rounded-2xl bg-white/10 p-4"
+              >
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-white text-sky-600">
+                  {i === 0 ? (
+                    <Gift className="size-5" />
+                  ) : i === 1 ? (
+                    <Percent className="size-5" />
+                  ) : (
+                    <IndianRupee className="size-5" />
+                  )}
+                </span>
+                <p className="text-sm font-black leading-5 text-white">{item}</p>
+              </div>
+            ))}
+          </div>
+          <div className="relative mt-8 h-36 overflow-hidden rounded-3xl bg-sky-100">
+            <div className="absolute left-0 right-0 top-1/2 h-7 -translate-y-1/2 bg-slate-800/80" />
+            <div className="absolute left-0 right-0 top-1/2 h-0.5 -translate-y-1/2 border-t border-dashed border-white/70" />
+            <Image
+              src="/vehicle-bike.png"
+              alt="Bandi bike"
+              width={90}
+              height={90}
+              className="launch-vehicle absolute bottom-8 left-4 h-16 w-16 object-contain drop-shadow-xl"
+            />
+            <Image
+              src="/vehicle-auto.png"
+              alt="Bandi auto"
+              width={110}
+              height={90}
+              className="launch-vehicle-delay absolute bottom-8 left-28 h-20 w-20 object-contain drop-shadow-xl"
+            />
+            <Image
+              src="/vehicle-sedan.png"
+              alt="Bandi car"
+              width={120}
+              height={90}
+              className="launch-vehicle-slow absolute bottom-8 left-56 h-20 w-20 object-contain drop-shadow-xl"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DriverTribute({
+  copy,
+}: {
+  copy: ReturnType<typeof getDictionary>['home'];
+}) {
+  return (
+    <Reveal className="bg-slate-950 py-20 text-white">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[.95fr_1.05fr] lg:px-8">
+        <div>
+          <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-300">
+            {copy.launchKicker}
+          </p>
+          <h2 className="mt-4 text-balance text-4xl font-black tracking-tight md:text-6xl">
+            {copy.dedicationTitle}
+          </h2>
+          <p className="mt-5 text-pretty text-lg leading-8 text-slate-300">
+            {copy.dedicationText}
+          </p>
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            {copy.driverLaunchOffer.map(([value, label]) => (
+              <div
+                key={label}
+                className="rounded-3xl border border-white/10 bg-white/5 p-5"
+              >
+                <p className="text-3xl font-black text-white">{value}</p>
+                <p className="mt-1 text-xs font-bold uppercase tracking-wide text-slate-400">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="relative min-h-[430px] overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-6">
+          <div className="absolute inset-x-8 top-16 h-3 rounded-full bg-sky-400/80" />
+          <div className="absolute bottom-14 left-6 right-6 h-32 rounded-[2rem] bg-slate-900" />
+          <div className="absolute bottom-26 left-10 flex items-end gap-6">
+            <Image src="/vehicle-bike.png" alt="Bike driver" width={120} height={120} className="h-24 w-24 object-contain drop-shadow-2xl" />
+            <Image src="/vehicle-auto.png" alt="Auto driver" width={140} height={140} className="h-32 w-32 object-contain drop-shadow-2xl" />
+            <Image src="/vehicle-premium.png" alt="Cab driver" width={150} height={150} className="h-32 w-32 object-contain drop-shadow-2xl" />
+          </div>
+          <div className="absolute right-6 top-6 max-w-60 rounded-3xl bg-white p-5 text-slate-950 shadow-2xl">
+            <HandHeart className="size-8 text-sky-500" />
+            <p className="mt-3 text-lg font-black">{copy.freeMonth}</p>
+          </div>
+          <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-sky-500 p-5 text-white shadow-xl">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-sky-100">
+              {copy.launch}
+            </p>
+            <p className="mt-1 text-2xl font-black">Bandi Mobility</p>
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+function FareComparison({
+  copy,
+}: {
+  copy: ReturnType<typeof getDictionary>['home'];
+}) {
+  return (
+    <Reveal className="bg-white py-20">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+        <div>
+          <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-500">
+            0% commission
+          </p>
+          <h2 className="mt-3 text-balance text-4xl font-black tracking-tight text-slate-950 md:text-5xl">
+            {copy.savingsTitle}
+          </h2>
+          <p className="mt-4 text-pretty text-lg leading-8 text-slate-600">
+            {copy.savingsText}
+          </p>
+          <div className="mt-8 grid gap-4">
+            {copy.fareComparison.map(([label, text], index) => (
+              <div
+                key={label}
+                className={
+                  index === 0
+                    ? 'rounded-[2rem] border border-rose-100 bg-rose-50 p-6'
+                    : 'rounded-[2rem] border border-emerald-100 bg-emerald-50 p-6'
+                }
+              >
+                <p className="text-sm font-black uppercase tracking-[0.18em] text-slate-500">
+                  {label}
+                </p>
+                <p className="mt-2 text-2xl font-black text-slate-950">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="relative rounded-[2.5rem] bg-slate-950 p-6 text-white shadow-2xl">
+          <div className="absolute -inset-6 rounded-[3rem] bg-sky-200/40 blur-3xl" />
+          <div className="relative grid gap-4">
+            {copy.ledgerRows.map(([label, value], index) => (
+              <div
+                key={label}
+                className="flex items-center justify-between rounded-3xl bg-white/10 p-5"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="flex size-11 items-center justify-center rounded-2xl bg-white text-sky-600">
+                    {index === 0 ? <Route className="size-5" /> : index === 1 ? <Percent className="size-5" /> : <Wallet className="size-5" />}
+                  </span>
+                  <p className="font-black">{label}</p>
+                </div>
+                <p className={index === 1 ? 'text-3xl font-black text-emerald-300' : 'text-3xl font-black text-white'}>
+                  {value}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
 export default async function Page({
   searchParams,
 }: {
@@ -269,8 +472,11 @@ export default async function Page({
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-28">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-sky-700 shadow-sm">
-              <MapPin className="size-4" /> {t.home.launch}
+              <Sparkles className="size-4" /> {t.home.launch}
             </div>
+            <p className="mt-5 text-sm font-black uppercase tracking-[0.22em] text-slate-500">
+              {t.home.launchKicker}
+            </p>
             <h1 className="mt-6 text-balance text-5xl font-black leading-[0.95] tracking-tighter text-slate-950 md:text-7xl">
               {t.home.heroTitle.split('\n').map((line) => (
                 <span key={line}>
@@ -282,6 +488,19 @@ export default async function Page({
             <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-slate-700">
               {t.home.heroText}
             </p>
+            <div className="mt-6 grid max-w-2xl gap-3">
+              {[t.home.freeMonth, t.home.noSurge, t.home.choosePrice].map(
+                (item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 rounded-2xl border border-sky-100 bg-white/80 px-4 py-3 font-black text-slate-800 shadow-sm backdrop-blur"
+                  >
+                    <CheckCircle2 className="size-5 shrink-0 text-emerald-500" />
+                    {item}
+                  </div>
+                ),
+              )}
+            </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href={withLocale('/#join', locale)}
@@ -304,7 +523,7 @@ export default async function Page({
               iosLabel={t.home.iosLabel}
             />
             <div className="mt-8 grid max-w-2xl grid-cols-3 gap-3">
-              {t.home.stats.map(([value, label]) => (
+              {t.home.launchStats.map(([value, label]) => (
                 <div
                   key={label}
                   className="rounded-3xl border border-white/80 bg-white/70 p-4 shadow-sm backdrop-blur"
@@ -318,14 +537,15 @@ export default async function Page({
             </div>
           </div>
 
-          <div className="relative grid gap-6 md:grid-cols-2 lg:gap-3">
-            <AppPreview mode="rider" copy={t.home} />
-            <div className="mt-10 hidden md:block">
-              <AppPreview mode="partner" copy={t.home} />
-            </div>
+          <div className="relative">
+            <LaunchPoster copy={t.home} />
           </div>
         </div>
       </Reveal>
+
+      <DriverTribute copy={t.home} />
+
+      <FareComparison copy={t.home} />
 
       <Reveal id="why-bandi" className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

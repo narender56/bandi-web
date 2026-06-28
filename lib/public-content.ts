@@ -57,39 +57,39 @@ export const vehicleTypes = [
 ]
 
 export const riderFeatures = [
+  ["Cheaper by design", "Bandi does not add ride commission, so riders can see cleaner prices.", Wallet],
+  ["No surge pressure", "No sudden surge pricing just because demand changes.", LockKeyhole],
   ["Live driver tracking", "Watch your driver move toward pickup and destination in real time.", Navigation],
-  ["Fare locked before pickup", "The accepted fare is visible before the ride begins. No surprise surge.", LockKeyhole],
-  ["Direct driver payment", "Pay cash or UPI directly to the driver's saved payment details.", Wallet],
   ["Safety built in", "SOS, share trip, verified drivers, ratings, and ride history.", ShieldCheck],
 ]
 
 export const driverFeatures = [
-  ["0% ride commission", "Bandi does not take a cut from ride fare.", BadgeCheck],
-  ["Daily subscription", "A predictable daily fee replaces commission on every ride.", CreditCard],
+  ["0% ride commission", "Bandi does not take a cut from ride fare. The ride fare belongs to you.", BadgeCheck],
+  ["1 month free at launch", "Every approved driver gets the first month subscription free for the launch campaign.", CreditCard],
+  ["Choose your price", "Drivers can choose a pricing profile instead of being trapped in one rate.", Zap],
   ["Verified onboarding", "Identity, documents, vehicle photos, and payment details are checked.", FileText],
-  ["Smart dispatch", "Nearby drivers are prioritized with fairness, acceptance, and rating signals.", Zap],
 ]
 
 export const whyBandi = [
   {
     title: "Drivers keep the fare",
-    text: "Most ride platforms earn when every trip happens. Bandi's promise is simpler: rider fare goes to the driver, while the platform earns through transparent driver subscription fees.",
+    text: "Most ride platforms take a cut every time a driver works. Bandi's promise is simpler: rider fare goes to the driver, while the platform runs on transparent subscription fees.",
     icon: Wallet,
   },
   {
-    title: "Clearer ride closure",
-    text: "Start and end PINs reduce confusion around pickup, ride start, payment confirmation, and ride completion.",
+    title: "No surge for riders",
+    text: "Riders should not feel punished for needing a ride at the wrong time. Bandi is built around clear fares instead of surge spikes.",
+    icon: Timer,
+  },
+  {
+    title: "Driver price choice",
+    text: "Driver partners can choose their pricing profile, helping them balance acceptance, earnings, and local demand.",
     icon: LockKeyhole,
   },
   {
     title: "Built for support teams",
     text: "Status changes, notifications, cancellations, SOS, ratings, and ride traces are available for admin review instead of disappearing into chat screenshots.",
     icon: LifeBuoy,
-  },
-  {
-    title: "Built for real operations",
-    text: "Bandi is designed for local geography, multilingual support, vehicle categories, and driver onboarding rules that can scale across markets.",
-    icon: MapPin,
   },
 ]
 
