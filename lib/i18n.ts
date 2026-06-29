@@ -77,10 +77,10 @@ export const dictionary = {
     },
     home: {
       launch: "Launching August 15",
-      launchKicker: "Dedicated to India's hardworking bike, auto and cab drivers",
+      launchKicker: "Dedicated to India's hardworking bike, auto and car drivers",
       heroTitle: "Freedom from commission.\nFair rides for everyone.",
       heroText:
-        "Bandi is launching as a driver-first mobility platform where drivers keep 100% of the ride fare and riders pay cleaner prices because we do not add ride commission. No surge. Direct driver payment. Verified rides from bike, auto and car partners.",
+        "Bandi is launching as a driver-first mobility platform where drivers keep 100% of the ride fare and riders pay cleaner prices because we do not add ride commission. No surge. Direct driver payment. Verified rides from bike, auto, hatchback, sedan, premium and XL partners.",
       freedomLine:
         "This Independence Day, Bandi is built for the people who keep cities moving.",
       freeMonth: "Every approved driver gets 1 month free subscription at launch.",
@@ -104,7 +104,7 @@ export const dictionary = {
       ],
       dedicationTitle: "To the drivers who start before sunrise and finish after the city sleeps.",
       dedicationText:
-        "Bandi is our thank-you to cab, auto, and bike drivers who work through heat, rain, traffic, airport runs, late nights, and early mornings. We are building a platform where the fare respects the person doing the ride.",
+        "Bandi is our thank-you to bike, auto, hatchback, sedan, premium and XL drivers who work through heat, rain, traffic, airport runs, late nights, and early mornings. We are building a platform where the fare respects the person doing the ride.",
       savingsTitle: "Why riders should pay less",
       savingsText:
         "When a platform does not take a commission from every ride, the price can be cleaner. Riders see fair ride options and drivers receive the fare directly.",
@@ -136,7 +136,7 @@ export const dictionary = {
         "No ride commission. Transparent daily fees. Direct rider payments. Verified onboarding and admin support.",
       vehiclesEyebrow: "Ride options",
       vehiclesTitle: "One platform for everyday city movement",
-      vehiclesText: "Start with autos, add faster bikes, family cars, premium cars, and XL rides as supply grows.",
+      vehiclesText: "Book across bike, auto, hatchback, sedan, premium and XL categories as supply grows.",
       safetyEyebrow: "Safety & operations",
       safetyTitle: "Not just booking. The whole ride lifecycle.",
       safetyText:
@@ -282,10 +282,10 @@ export const dictionary = {
     },
     home: {
       launch: "15 August launch",
-      launchKicker: "India के मेहनती bike, auto और cab drivers को समर्पित",
+      launchKicker: "India के मेहनती bike, auto और car drivers को समर्पित",
       heroTitle: "Commission से आज़ादी.\nसबके लिए fair rides.",
       heroText:
-        "Bandi एक driver-first mobility platform है जहाँ drivers ride fare का 100% रखते हैं और riders को cleaner prices मिलते हैं क्योंकि हम ride commission नहीं लेते. No surge. Direct driver payment. Verified bike, auto और car partners.",
+        "Bandi एक driver-first mobility platform है जहाँ drivers ride fare का 100% रखते हैं और riders को cleaner prices मिलते हैं क्योंकि हम ride commission नहीं लेते. No surge. Direct driver payment. Verified bike, auto, hatchback, sedan, premium और XL partners.",
       freedomLine: "इस Independence Day, Bandi उन लोगों के लिए बना है जो शहर को चलाते हैं.",
       freeMonth: "Launch पर हर approved driver को 1 month free subscription.",
       noSurge: "Riders के लिए no surge pricing",
@@ -308,7 +308,7 @@ export const dictionary = {
       ],
       dedicationTitle: "उन drivers के लिए जो सूरज से पहले शुरू करते हैं और शहर के बाद रुकते हैं.",
       dedicationText:
-        "Bandi cab, auto और bike drivers को thank-you है — heat, rain, traffic, airport runs, late nights और early mornings में काम करने वाले लोगों के लिए.",
+        "Bandi bike, auto, hatchback, sedan, premium और XL drivers को thank-you है — heat, rain, traffic, airport runs, late nights और early mornings में काम करने वाले लोगों के लिए.",
       savingsTitle: "Riders कम क्यों pay करें",
       savingsText:
         "जब platform हर ride से commission नहीं लेता, price cleaner हो सकता है. Riders fair options देखते हैं और drivers fare direct receive करते हैं.",
@@ -337,7 +337,7 @@ export const dictionary = {
       driverText: "No ride commission. Transparent daily fees. Direct rider payments. Verified onboarding और admin support.",
       vehiclesEyebrow: "Ride options",
       vehiclesTitle: "Daily city movement के लिए एक platform",
-      vehiclesText: "Auto, bike, family cars, premium cars और XL rides supply के साथ grow होते हैं.",
+      vehiclesText: "Bike, auto, hatchback, sedan, premium और XL rides supply के साथ grow होते हैं.",
       safetyEyebrow: "Safety & operations",
       safetyTitle: "सिर्फ booking नहीं. पूरा ride lifecycle.",
       safetyText: "Bandi live location, driver status, notifications, cancellations, PINs, support, SOS, wallet और admin audit trails track करता है.",
@@ -443,10 +443,10 @@ export const dictionary = {
     },
     home: {
       launch: "August 15 launch",
-      launchKicker: "India hardworking bike, auto, cab drivers కి అంకితం",
+      launchKicker: "India hardworking bike, auto, car drivers కి అంకితం",
       heroTitle: "Commission నుండి freedom.\nఅందరికీ fair rides.",
       heroText:
-        "Bandi driver-first mobility platform. Drivers ride fare 100% ఉంచుకుంటారు, riders cleaner prices pay చేస్తారు ఎందుకంటే మేము ride commission తీసుకోము. No surge. Direct driver payment. Verified bike, auto, car partners.",
+        "Bandi driver-first mobility platform. Drivers ride fare 100% ఉంచుకుంటారు, riders cleaner prices pay చేస్తారు ఎందుకంటే మేము ride commission తీసుకోము. No surge. Direct driver payment. Verified bike, auto, hatchback, sedan, premium, XL partners.",
       freedomLine: "ఈ Independence Day, city ని move చేసే drivers కోసం Bandi.",
       freeMonth: "Launch లో ప్రతి approved driver కి 1 month free subscription.",
       noSurge: "Riders కోసం no surge pricing",
@@ -469,7 +469,7 @@ export const dictionary = {
       ],
       dedicationTitle: "సూర్యుడు రాకముందే మొదలుపెట్టి, city నిద్రపోయాక ఆపే drivers కోసం.",
       dedicationText:
-        "Heat, rain, traffic, airport runs, late nights, early mornings లో పని చేసే cab, auto, bike drivers కి Bandi ఒక thank-you.",
+        "Heat, rain, traffic, airport runs, late nights, early mornings లో పని చేసే bike, auto, hatchback, sedan, premium, XL drivers కి Bandi ఒక thank-you.",
       savingsTitle: "Riders ఎందుకు తక్కువ pay చేయాలి",
       savingsText:
         "Platform ప్రతి ride మీద commission తీసుకోకపోతే price cleaner గా ఉంటుంది. Riders fair options చూస్తారు, drivers fare direct receive చేస్తారు.",
@@ -498,7 +498,7 @@ export const dictionary = {
       driverText: "No ride commission. Transparent daily fees. Direct rider payments. Verified onboarding మరియు admin support.",
       vehiclesEyebrow: "Ride options",
       vehiclesTitle: "రోజువారీ city movement కోసం ఒక platform",
-      vehiclesText: "Autos, bikes, family cars, premium cars, XL rides supply పెరిగేకొద్దీ అందుబాటులోకి వస్తాయి.",
+      vehiclesText: "Bike, auto, hatchback, sedan, premium, XL rides supply పెరిగేకొద్దీ అందుబాటులోకి వస్తాయి.",
       safetyEyebrow: "Safety & operations",
       safetyTitle: "Booking మాత్రమే కాదు. మొత్తం ride lifecycle.",
       safetyText: "Bandi live location, driver status, notifications, cancellations, PINs, support, SOS, wallet, admin audit trails track చేస్తుంది.",

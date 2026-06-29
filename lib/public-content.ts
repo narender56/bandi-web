@@ -51,6 +51,7 @@ export const footerGroups = [
 export const vehicleTypes = [
   { name: "Bike", image: "/vehicle-bike.png", text: "Fast solo rides for short city trips." },
   { name: "Auto", image: "/vehicle-auto.png", text: "Everyday rides with fair pricing." },
+  { name: "Hatchback", image: "/vehicle-sedan.png", text: "Compact cars for simple daily travel." },
   { name: "Sedan", image: "/vehicle-sedan.png", text: "Comfortable cars for daily commutes." },
   { name: "Premium", image: "/vehicle-premium.png", text: "Better vehicles for special trips." },
   { name: "XL", image: "/vehicle-xl.png", text: "More seats and space for family rides." },
@@ -188,6 +189,7 @@ export function getPublicContent(locale: Locale) {
       vehicleTypes: [
         { name: "Bike", image: "/vehicle-bike.png", text: "Short city trips के लिए fast solo rides." },
         { name: "Auto", image: "/vehicle-auto.png", text: "Daily rides with fair pricing." },
+        { name: "Hatchback", image: "/vehicle-sedan.png", text: "Simple daily travel के लिए compact cars." },
         { name: "Sedan", image: "/vehicle-sedan.png", text: "Daily commute के लिए comfortable cars." },
         { name: "Premium", image: "/vehicle-premium.png", text: "Special trips के लिए बेहतर vehicles." },
         { name: "XL", image: "/vehicle-xl.png", text: "Family rides के लिए ज्यादा seats और space." },
@@ -226,6 +228,7 @@ export function getPublicContent(locale: Locale) {
       vehicleTypes: [
         { name: "Bike", image: "/vehicle-bike.png", text: "Short city trips కోసం fast solo rides." },
         { name: "Auto", image: "/vehicle-auto.png", text: "Fair pricing తో everyday rides." },
+        { name: "Hatchback", image: "/vehicle-sedan.png", text: "Simple daily travel కోసం compact cars." },
         { name: "Sedan", image: "/vehicle-sedan.png", text: "Daily commute కోసం comfortable cars." },
         { name: "Premium", image: "/vehicle-premium.png", text: "Special trips కోసం better vehicles." },
         { name: "XL", image: "/vehicle-xl.png", text: "Family rides కోసం more seats and space." },

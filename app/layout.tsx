@@ -4,9 +4,9 @@ import './globals.css';
 import { siteConfig } from '@/lib/site-config';
 import { Toaster } from '@/components/ui/toast';
 
-const siteTitle = 'Bandi — Zero commission rides launching August 15';
+const siteTitle = 'Bandi — Zero commission bike, auto and car rides launching August 15';
 const siteDescription =
-  'Bandi is launching August 15 with zero ride commission, one month free subscription for approved drivers, no surge for riders, direct driver payment, verified bike, auto and cab rides, live tracking and safety tools.';
+  'Bandi is launching August 15 with zero ride commission, one month free subscription for approved drivers, no surge for riders, direct driver payment, and verified bike, auto, hatchback, sedan, premium and XL rides with live tracking and safety tools.';
 const siteUrl = siteConfig.siteUrl;
 const previewImage = '/bandi-app-icon.png';
 
@@ -23,19 +23,40 @@ export const metadata: Metadata = {
     'Bandi',
     'Bandi Mobility',
     'ride booking app',
+    'city ride booking app',
+    'taxi booking app',
     'bike taxi app',
+    'bike ride app',
+    'bike rides India',
     'auto booking app',
+    'auto rickshaw booking app',
+    'auto rides India',
     'cab booking app',
+    'car rides India',
+    'hatchback rides',
+    'sedan rides',
+    'premium car rides',
+    'XL rides',
+    'airport rides',
     'driver first mobility',
+    'driver app India',
+    'rider app India',
     'August 15 launch',
     'one month free driver subscription',
     'no surge rides',
+    'no surge pricing',
     'zero commission rides',
+    'zero commission driver app',
     'direct driver payment',
+    'direct UPI payment rides',
     'verified drivers',
     'live ride tracking',
     'ride safety app',
+    'SOS ride safety',
+    'driver keeps 100 percent fare',
+    'fair fare rides',
     'India mobility app',
+    'Bandi Mobility Private Limited',
   ],
   authors: [{ name: siteConfig.companyName, url: siteUrl }],
   creator: siteConfig.companyName,
