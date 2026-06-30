@@ -4,7 +4,8 @@ import './globals.css';
 import { siteConfig } from '@/lib/site-config';
 import { Toaster } from '@/components/ui/toast';
 
-const siteTitle = 'Bandi — Zero commission bike, auto and car rides launching August 15';
+const siteTitle =
+  'Bandi — Zero commission bike, auto and car rides launching August 15';
 const siteDescription =
   'Bandi is launching August 15 with zero ride commission, one month free subscription for approved drivers, no surge for riders, direct driver payment, and verified bike, auto, hatchback, sedan, premium and XL rides with live tracking and safety tools.';
 const siteUrl = siteConfig.siteUrl;
@@ -182,6 +183,12 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="bg-slate-50">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="W8SMPrixyYhA-Awf9Csyet0Xmrf3wOWH6DfBWYeATP8"
+        />
+      </head>
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
