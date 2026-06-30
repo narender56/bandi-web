@@ -340,8 +340,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/favicon.svg',
-        type: 'image/svg+xml',
+        url: '/favicon.ico',
+        type: 'image/x-icon',
       },
       {
         url: '/icon.svg',
@@ -360,7 +360,7 @@ export const metadata: Metadata = {
         media: '(prefers-color-scheme: dark)',
       },
     ],
-    shortcut: '/favicon.svg',
+    shortcut: '/favicon-16x16.png',
     apple: '/apple-icon.png',
   },
 };
